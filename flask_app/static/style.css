@@ -1,0 +1,162 @@
+/* styling for all pages */
+
+body {
+	font-family: 'Josefin Sans', sans-serif;
+	box-sizing: border-box;
+	background: linear-gradient(132deg, #626550, #969b5f, #44553c);
+	background-size: 400% 400%;
+	height: 120vh;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+  /* navbar */
+nav{
+	float: right;
+	margin:30px 90px;
+
+}
+
+nav ul{
+	list-style: none;
+}
+nav ul li {
+	float: left;
+	transition: .3s;
+}
+nav ul li a{
+	text-decoration: none;
+	color: #EFEEF5;
+	transition: .1;
+	font-size: 20px;
+	margin-left:16px;
+}
+
+nav ul li:hover a{
+	font-size: 24px;
+	color: white;
+	padding: 3px;
+	border: 1px solid purple;
+}
+
+nav ul li:hover{
+	height: 30px;
+	padding-top: 30px;
+	margin-top: -20px;
+	background: #EFEEF5;
+	transform: skew(15deg);
+	border: 1px solid pink;
+}
+  /* Logo */
+.logo{
+	width: 27px;
+	height: 35px;
+	background: #104428;
+	opacity: 70%;
+	margin: 40px 63px;
+	float: left;
+	transform: rotate(-20deg);
+}
+
+.logo span{
+	color: white;
+	font-size: 2em;
+	line-height: 1.4;
+	font-weight: bold;
+	border: 1px solid white;
+}
+
+/* ------------------------------------------------------------------------------------- */
+/* styling for ('/') page */
+
+#container{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#register,#login{
+	width: 40%;
+	margin-top: 10%;
+}
+
+#login_color{
+	color:#646b60;
+}
+
+#register_input,#login_input{
+    width: 80%;
+}
+
+#register_form,#login_form,#dashboard{
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#logout{
+	margin-left: 35%;
+}
+
+/* styling for flash messages  */
+#alert{
+	width: 80%;
+	height: 140px;
+	padding: 5px;
+}
+/* -------------------------------------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------------------------------- */
+/* styling for new page  */
+
+
+.post_container{
+	margin-top: 15%;
+	background-color: whitesmoke;
+	width: 70%;
+	opacity: 80%;
+	border-radius: 10px;
+	margin-left: 30%;
+}
+
+#publish_post{
+	width: 70%;
+	margin: 0 auto;
+	border-radius: 10px;
+	background-color:#212335;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#title{
+	color: white;
+	text-align: center;
+	padding: 10px;
+}
+
+#text_area{
+	width: 90%;
+	margin: 0 auto;
+}
+
+#submit{
+	background-color: #591BC5;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 10px;
+	margin-left: 40%;
+}
+
+#post_alert{
+	width: 70%;
+	margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+#dashboard_container{
+	padding-top: 12%;
+}
