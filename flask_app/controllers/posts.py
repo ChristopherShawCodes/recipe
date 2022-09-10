@@ -35,3 +35,7 @@ def destroy(id):
     }
     Post.destroy(data)
     return redirect('/dashboard')
+
+@app.route('/recipes/new')
+def create():
+    return render_template("new.html")

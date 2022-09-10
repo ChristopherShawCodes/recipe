@@ -15,22 +15,18 @@
 </head>
 
 <body>
-<header>
-    <!-- place navbar here -->
-    <nav id="nav">
-        <ul>
-        <li><a href="#" >Welcome {{user.first_name}}</a></li>
-        <li><a href="/logout">Logout</a></li>
-        </ul>
-    </nav>
-    <!-- logo -->
-    <div class="logo"><span>Coding Dojo Wall</span></div>
-</header>
 <main>
-</div>
-<!-- title & content -->
-<div class="page_content_top">
-    <div class="post_container">
+    <div class="main">
+    <div class="logo"><span>Recipe Assignment</span></div>
+        <nav id="nav">
+            <ul>
+                <!-- check /create -->
+                <li><a href="/dashboard" >Back To Recipes</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
         <form action="/publish_post" id="publish_post" method="post">
             <h1 id="title">What's On Your Mind?</h1>
             <h4 id="title">Create A New Post</h4>
@@ -53,9 +49,6 @@
     </div>
 </div>
 </main>
-<footer>
-    <!-- place footer here -->
-</footer>
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">

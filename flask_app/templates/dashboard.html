@@ -22,25 +22,34 @@
         <nav id="nav">
             <ul>
                 <!-- check /create -->
-                <li><a href="/create" >Create</a></li>
+                <li><a href="/recipes/new" >Create</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
     </div>
     <div class="container" id="dashboard_container">
         <h1 id="title">Welcome {{user.first_name}}</h1>
-        <h4>All posted recipes:</h4>
+        <h4 id="title">All posted recipes:</h4>
         <div class="table-s">
             <table class="table table-striped" id="table">
             <tbody>
+                <tr>
+                    <th class="table-secondary">Recipe Name</th>
+                    <th class="table-secondary">Under 30 Mins</th>
+                    <th class="table-secondary">Posted By</th>
+                    <th class="table-secondary">Actions</th>
+                </tr>
                 {% for one_post in all_posts %}
                 <tr>
-                <th class="table-secondary">{{ one_post.creator.first_name }}    {{ one_post.created_at}}</th>
-                <td class="table-secondary">{{one_post.content }}</td>
-                {% if session['user_id'] == one_post.creator.id %}
-                <td class="table-secondary"><a href="/post/destroy/{{one_post.id}}">Delete</a></td>
-                {% else %}
+                    <!-- need the name of the recipe here  -->
                 <td class="table-secondary"></td>
+                <!-- recipe under 30 mins? here  -->
+                <td class="table-secondary"></td>
+                <td class="table-secondary">{{ one_post.creator.first_name }}</td>
+                {% if session['user_id'] == one_post.creator.id %}
+                <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a> |<a href="/post/edit/{{one_post.id}}">Edit</a>| <a href="/post/destroy/{{one_post.id}}">Delete</a></td>
+                {% else %}
+                <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a></td>
                 {% endif %}
                 </tr>
                 {% endfor %}
