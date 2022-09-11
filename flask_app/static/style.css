@@ -37,24 +37,19 @@ nav ul li a{
 	text-decoration: none;
 	color: #EFEEF5;
 	transition: .1;
-	font-size: 20px;
+	font-size: 24px;
 	margin-left:16px;
 }
 
 nav ul li:hover a{
 	font-size: 24px;
 	color: white;
-	padding: 3px;
-	border: 1px solid purple;
 }
 
 nav ul li:hover{
-	height: 30px;
-	padding-top: 30px;
-	margin-top: -20px;
-	background: #EFEEF5;
-	transform: skew(15deg);
-	border: 1px solid pink;
+
+	transform: skew(20deg);
+
 }
   /* Logo */
 .logo{

@@ -36,12 +36,16 @@ def destroy(id):
     Post.destroy(data)
     return redirect('/dashboard')
 
+
 @app.route('/recipes/new')
 def create():
     return render_template("new.html")
 
 
 # make sure to add <int:> here
-@app.route('/recipe')
-def show():
+@app.route('/post/view/<int:id>')
+def show(id):
+    data = {
+        "id": id
+    }
     return render_template("recipe.html")
