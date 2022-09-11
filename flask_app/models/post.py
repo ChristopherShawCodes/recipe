@@ -75,4 +75,16 @@ class Post:
     # @classmethod
     # def get_one(cls,data):
     #     query = "SELECT * FROM posts WHERE id = %(id)s;"
-    #     return connectToMySQL('dojo_wall').query_db(query,data)
+    #     return connectToMySQL('recipes_assignment').query_db(query,data)
+
+    @classmethod
+    def get_by_way_of_id(cls,data):
+        query = "SELECT * FROM posts WHERE id = %(id)s;"
+        results = connectToMySQL("recipes_assignment").query_db(query,data)
+        return cls(results[0])
+
+    @classmethod
+    def update(cls,data):
+        query = "UPDATE posts SET name=%(name)s,type=%(type)s,num_of_boxes=%(num_of_boxes)s,updated_at=NOW() WHERE id = %(id)s;"
+        return connectToMySQL('recipes_assignment').query_db(query,data)
+

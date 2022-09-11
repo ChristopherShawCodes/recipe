@@ -43,7 +43,8 @@ def destroy(id):
 
 @app.route('/recipes/new')
 def create():
-    return render_template("new.html")
+    posts = Post.get_all_posts()
+    return render_template("new.html",posts=posts)
 
 
 # make sure to add <int:> here
@@ -59,4 +60,16 @@ def edit(id):
     data = {
         "id": id
     }
-    return render_template("edit.html")
+    post = Post.get_by_way_of_id(data)
+    Post.publish(data)
+    print(data)
+    return render_template("edit.html",post=post)
+
+@app.route('/post/update', methods = ['POST'])
+def update():
+    data = {
+        "id":id
+    }
+    Post.update(data)
+    print(data)
+    return redirect("/dashboard")

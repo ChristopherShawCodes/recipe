@@ -29,6 +29,7 @@
     </header>
     <div class="container" id="new_recipe_container">
         <form class="row g-3" action="/publish_post" id="recipe" method="post">
+            <input type="hidden" name="id" value="{{posts.id}}">
             <h1 id="title">Add A New Recipe!</h1>
             {% with messages = get_flashed_messages(category_filter=['post']) %}
             {% if messages %}
