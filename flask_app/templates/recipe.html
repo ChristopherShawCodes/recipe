@@ -29,7 +29,7 @@
     </div>
 </header>
     <div class="container" id="dashboard_container">
-        <h1 id="title_1">Welcome {{user.first_name}}</h1>
+        <h1 id="title_1">Welcome {{one_post.creator.first_name}}</h1>
         <h4 id="title_1">All posted recipes:</h4>
         <div class="table-s">
             <table class="table table-striped" id="table">
@@ -43,14 +43,14 @@
                 {% for one_post in all_posts %}
                 <tr>
                     <!-- need the name of the recipe here  -->
-                <td class="table-secondary">{{one_post.name}}</td>
+                <td class="table-secondary"></td>
                 <!-- recipe under 30 mins? here  -->
-                <td class="table-secondary">{{one_post.under_30}}</td>
+                <td class="table-secondary"></td>
                 <td class="table-secondary">{{ one_post.creator.first_name }}</td>
                 {% if session['user_id'] == one_post.creator.id %}
-                <!-- recipe.html href=/post/view/{{one_post.id}} -->
                 <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a> |<a href="/post/edit/{{one_post.id}}">Edit</a>| <a href="/post/destroy/{{one_post.id}}">Delete</a></td>
                 {% else %}
+                <!-- add this to the href , it was plugged temporarily to format the page (/post/view/{{one_post.id}}) -->
                 <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a></td>
                 {% endif %}
                 </tr>

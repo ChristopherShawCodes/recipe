@@ -39,3 +39,9 @@ def destroy(id):
 @app.route('/recipes/new')
 def create():
     return render_template("new.html")
+
+
+# make sure to add <int:> here
+@app.route('/recipe')
+def show():
+    return render_template("recipe.html")

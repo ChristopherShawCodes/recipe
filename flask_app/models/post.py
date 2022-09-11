@@ -17,6 +17,10 @@ class Post:
         self.content = data['content']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.instructions = data['instructions']
+        self.date_cooked = data['date_cooked']
+        self.under_30 = data['under_30']
+        self.name = data['name']
         self.creator = None
 
     @staticmethod
@@ -32,7 +36,7 @@ class Post:
     def get_all_posts(cls):
         # Select all from posts and join them together via their ids
         query = "SELECT * FROM posts LEFT JOIN users ON posts.user_id = users.id;"
-        results = connectToMySQL('dojo_wall').query_db(query)
+        results = connectToMySQL('recipes_assignment').query_db(query)
         print(results)
         all_posts = []
         for row in results:
@@ -45,7 +49,11 @@ class Post:
                 "last_name" : row['last_name'],
                 "email" : row['email'],
                 "updated_at": row['updated_at'],
-                "password": row['password']
+                "password": row['password'],
+                "instructions": row['instructions'],
+                "date_cooked": row['date_cooked'],
+                "under_30": row['under_30'],
+                "name": row['name']
             }
             author = user.User(one_post_author_info)
             one_post.creator = author
@@ -55,13 +63,13 @@ class Post:
     @classmethod
     def publish(cls,data):
         query = "INSERT INTO dojo_wall.posts (content,created_at,updated_at,user_id) VALUES (%(content)s,NOW(),NOW(),%(user_id)s);"
-        results = connectToMySQL("dojo_wall").query_db(query,data)
+        results = connectToMySQL("recipes_assignment").query_db(query,data)
         return results
 
     @classmethod
     def destroy(cls,data):
         query = "DELETE FROM posts WHERE id = %(id)s;"
-        return connectToMySQL("dojo_wall").query_db(query,data)
+        return connectToMySQL("recipes_assignment").query_db(query,data)
 
     # @classmethod
     # def get_one(cls,data):

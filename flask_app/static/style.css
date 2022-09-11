@@ -11,20 +11,28 @@ body {
 	margin: 0px;
 }
 
+header{
+	position: fixed;
+	width: 100%;
+}
+
+
   /* navbar */
 nav{
 	float: right;
-	margin:30px 90px;
+	margin: 30px 90px;
 
 }
 
 nav ul{
 	list-style: none;
 }
+
 nav ul li {
 	float: left;
 	transition: .3s;
 }
+
 nav ul li a{
 	text-decoration: none;
 	color: #EFEEF5;
@@ -110,28 +118,17 @@ nav ul li:hover{
 /* ---------------------------------------------------------------------------------- */
 /* styling for new page  */
 
-
-.post_container{
-	margin-top: 15%;
+#recipe{
+	width: 80%;
+	margin: 0 auto;
 	background-color: whitesmoke;
-	width: 70%;
 	opacity: 80%;
 	border-radius: 10px;
-	margin-left: 30%;
-}
-
-#publish_post{
-	width: 70%;
-	margin: 0 auto;
-	border-radius: 10px;
-	background-color:#212335;
-	margin-top: 5px;
-	margin-bottom: 5px;
 }
 
 #title{
 	margin-top: 5%;
-	color: white;
+	color: rgb(28, 62, 28);
 	padding: 10px;
 }
 
@@ -141,13 +138,19 @@ nav ul li:hover{
 }
 
 #submit{
-	background-color: #591BC5;
-	color: white;
+	background-color: #747476;
+	color: rgb(28, 62, 28);
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding: 10px;
 	border-radius: 10px;
-	margin-left: 40%;
+	margin-left: 60%;
+	width: 30%;
+}
+
+#submit:hover{
+	background-color: #104428;
+	color: #747476;
 }
 
 #post_alert{
@@ -157,6 +160,19 @@ nav ul li:hover{
 
 /* ---------------------------------------------------------------------------------------- */
 
-#dashboard_container{
+/* Dashboard Styling  */
+
+#dashboard_container,#new_recipe_container{
 	padding-top: 12%;
 }
+
+#title_1{
+margin-top: 5%;
+color: white;
+padding: 10px;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* Recipe Page Styling  */
+

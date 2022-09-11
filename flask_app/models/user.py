@@ -27,7 +27,7 @@ class User:
         query = "INSERT INTO users (first_name,last_name, email, password)VALUES (%(first_name)s,%(last_name)s,%(email)s,%(password)s);"
         #data is a dictionary that will be passed into the save method from server.py
         #this return statement would return an integer of the id we just created in the database
-        return connectToMySQL("dojo_wall").query_db(query,data)
+        return connectToMySQL("recipes_assignment").query_db(query,data)
     
     
     # #This is a static method to validate a new user (register)
@@ -35,7 +35,7 @@ class User:
     def validate_register(user):
         is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL("dojo_wall").query_db(query,user)
+        results = connectToMySQL("recipes_assignment").query_db(query,user)
         if len(results) >= 1:
             flash("Email Already Taken By Another User","register")
             is_valid = False
@@ -59,7 +59,7 @@ class User:
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL("dojo_wall").query_db(query,data)
+        results = connectToMySQL("recipes_assignment").query_db(query,data)
         if len(results) < 1:
             return False
         return cls(results[0])
@@ -67,7 +67,7 @@ class User:
     @classmethod
     def get_by_id(cls,data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL("dojo_wall").query_db(query,data)
+        results = connectToMySQL("recipes_assignment").query_db(query,data)
         return cls(results[0])
 
 
