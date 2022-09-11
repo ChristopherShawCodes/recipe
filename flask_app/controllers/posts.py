@@ -18,7 +18,11 @@ def publish_post():
         return redirect('/dashboard')
     data = {
         "user_id": session['user_id'],
-        "content": request.form['content']
+        "content": request.form['content'],
+        "instructions": request.form['instructions'],
+        "date_cooked": request.form['date_cooked'],
+        "under_30": request.form['under_30'],
+        "name": request.form['name'],
         # "created_at": request.form['created_at'],
         # "updated_at": request.form['updated_at'],
         # "user_id": request.form['user_id']
@@ -49,3 +53,10 @@ def show(id):
         "id": id
     }
     return render_template("recipe.html")
+
+@app.route('/post/edit/<int:id>')
+def edit(id):
+    data = {
+        "id": id
+    }
+    return render_template("edit.html")

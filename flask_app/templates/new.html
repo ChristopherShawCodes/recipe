@@ -51,21 +51,30 @@
                 <label for="publish_post">Description:</label>
                 <textarea class="form-control" input="text" id="input" rows="3" action="/publish_post" name="content"></textarea>
             </div>
-            <div id="date-picker-example" class="md-form md-outline col-md-6 input-with-post-icon datepicker" inline="true">
-                <label for="example">Date Cooked:</label>
-                <input placeholder="Select date" type="text" id="example" class="form-control">
-                <i class="fas fa-calendar input-prefix"></i>
+            <div id="date-picker-example" class="col-md-6" inline="true">
+                <label for="start">Date Cooked:</label>
+                <input type="date" id="start" name="date_cooked"
+                value="2022-07-22"
+                min="2022-01-01" max="2022-12-31">
             </div>
             <div class="col-md-6">
                 <label for="publish_post">Instructions:</label>
                 <textarea class="form-control" input="text" id="input" rows="3" name="instructions"></textarea>
             </div>
-            <div class="col-md-6">
+            <div class="form-check col-md-6">
                 <h5>Under 30 Minutes?</h5>
-                <input class="form-check-input" type="radio" id="yes" value="yes" name="yes">
-                <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                <input class="form-check-input" type="radio" id="no" value="no" name="no">
-                <label class="form-check-label" for="inlineCheckbox2">No</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="under_30" id="exampleRadios1" value="1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Yes
+                    </label>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="under_30" id="exampleRadios2" value="0">
+                    <label class="form-check-label" for="exampleRadios2">
+                    No
+                    </label>
+                </div>
+                </div>
             </div>
             <button type="submit" id="submit">Submit</button>
         </form>

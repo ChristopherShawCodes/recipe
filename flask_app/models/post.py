@@ -62,8 +62,9 @@ class Post:
 
     @classmethod
     def publish(cls,data):
-        query = "INSERT INTO dojo_wall.posts (content,created_at,updated_at,user_id) VALUES (%(content)s,NOW(),NOW(),%(user_id)s);"
+        query = "INSERT INTO recipes_assignment.posts (content,created_at,updated_at,user_id,instructions, date_cooked,under_30,name) VALUES (%(content)s,NOW(),NOW(),%(user_id)s,%(instructions)s,%(date_cooked)s,%(under_30)s,%(name)s);"
         results = connectToMySQL("recipes_assignment").query_db(query,data)
+        print(results)
         return results
 
     @classmethod
