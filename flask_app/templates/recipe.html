@@ -28,9 +28,10 @@
     </div>
     </header>
     <div class="container" id="new_recipe_container">
-        <h4>Welcome {{user.first_name}}</h4>
-        <h1 id="title">{{post.name}}</h1>
-        <td>{{ post.creator.first_name }}</td>
+        <div class="card_title">
+            <h2 id="color">Welcome {{user.first_name}}</h2>
+            <h1 id="title">{{post.name}}</h1>
+        </div>
         <form class="row g-3" action="/post/update" id="recipe" method="post">
             <input type="hidden" name="id" value="{{post.id}}">
             <div class="col-md-6">
@@ -38,7 +39,8 @@
                 <h6>{{post.name}}</h6>
             </div>
             <div class="col-md-6">
-                <label for="name" class="form-label"></label>
+                <label for="name" class="form-label">Made By:</label>
+                <h6>{{ post.creator.first_name }}</h6>
             </div>
             <div class="col-md-6">
                 <label for="content">Description:</label>

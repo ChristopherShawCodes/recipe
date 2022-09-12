@@ -26,11 +26,16 @@ class Post:
     @staticmethod
     def validate_post(post):
         is_valid=True
-        if len(post['content']) < 1:
-            flash("Please Make A Longer Post !","post")
+        if len(post['name']) < 3:
+            flash("Please Pick A Longer Name !","post")
+            is_valid = False
+        if len(post['content']) < 3:
+            flash("Please Add More To The Description !","post")
+            is_valid = False
+        if len(post['instructions']) < 3:
+            flash("Please Provide More Instructions !","post")
             is_valid = False
         return is_valid
-
 
     @classmethod
     def get_all_posts(cls):

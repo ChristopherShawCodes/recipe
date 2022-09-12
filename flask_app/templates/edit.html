@@ -56,9 +56,15 @@
             </div>
             <div class="col-md-6">
                 <h5>Under 30 Minutes?</h5>
-                <input class="form-check-input" type="radio" id="yes" name="under_30" value="{{post.under_30}}">
+                <input class="form-check-input" type="radio" id="yes" name="under_30" value="Yes"
+                {% if post.under_30 =="Yes" %}
+                    checked ="yes"
+                {% endif %}>
                 <label class="form-check-label" for="under_30">Yes</label>
-                <input class="form-check-input" type="radio" id="no" name="under_30" value="{{post.under_30}}">
+                <input class="form-check-input" type="radio" id="no" name="under_30" value="No"
+                {% if post.under_30 =="No" %}
+                    checked ="no"
+                {% endif %}>
                 <label class="form-check-label" for="under_30">No</label>
             </div>
             <button type="submit" id="submit">Submit</button>

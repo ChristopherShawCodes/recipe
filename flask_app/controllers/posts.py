@@ -15,7 +15,7 @@ def publish_post():
     if 'user_id' not in session:
         return redirect('/')
     if not Post.validate_post(request.form):
-        return redirect('/post/edit')
+        return redirect('/recipes/new')
     data = {
         "user_id": session['user_id'],
         "content": request.form['content'],
@@ -27,10 +27,10 @@ def publish_post():
         # "updated_at": request.form['updated_at'],
         # "user_id": request.form['user_id']
     }
-    new_post = Post.get_last()
+    # new_post = Post.get_last()
     Post.publish(data)
     print(data)
-    return redirect('/dashboard',new_post=new_post)
+    return redirect('/dashboard')
 
 
 @app.route('/post/destroy/<int:id>')
