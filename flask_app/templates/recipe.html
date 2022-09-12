@@ -12,7 +12,6 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-
 </head>
 
 <body>
@@ -22,45 +21,44 @@
         <nav id="nav">
             <ul>
                 <!-- check /create -->
-                <li><a href="/recipes/new" >Create</a></li>
+                <li><a href="/dashboard" >Back To Recipes</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
     </div>
-</header>
-    <div class="container" id="dashboard_container">
-        <h1 id="title_1">Welcome</h1>
-        <h4 id="title_1">All posted recipes:</h4>
-        <div class="table-s">
-            <table class="table table-striped" id="table">
-            <tbody>
-                <tr>
-                    <th class="table-secondary">Recipe Name</th>
-                    <th class="table-secondary">Under 30 Mins</th>
-                    <th class="table-secondary">Posted By</th>
-                    <th class="table-secondary">Actions</th>
-                </tr>
-                {% for one_post in all_posts %}
-                <tr>
-                    <!-- need the name of the recipe here  -->
-                <td class="table-secondary"></td>
-                <!-- recipe under 30 mins? here  -->
-                <td class="table-secondary"></td>
-                <td class="table-secondary">{{ one_post.creator.first_name }}</td>
-                {% if session['user_id'] == one_post.creator.id %}
-                <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a> |<a href="/post/edit/{{one_post.id}}">Edit</a>| <a href="/post/destroy/{{one_post.id}}">Delete</a></td>
-                {% else %}
-                <!-- add this to the href , it was plugged temporarily to format the page (/post/view/{{one_post.id}}) -->
-                <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a></td>
-                {% endif %}
-                </tr>
-                {% endfor %}
-            </tbody>
-            </table>
-        </div>
+    </header>
+    <div class="container" id="new_recipe_container">
+        <h4>Welcome {{user.first_name}}</h4>
+        <h1 id="title">{{post.name}}</h1>
+        <td>{{ post.creator.first_name }}</td>
+        <form class="row g-3" action="/post/update" id="recipe" method="post">
+            <input type="hidden" name="id" value="{{post.id}}">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Name:</label>
+                <h6>{{post.name}}</h6>
+            </div>
+            <div class="col-md-6">
+                <label for="name" class="form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <label for="content">Description:</label>
+                <h6>{{post.content}}</h6>
+            </div>
+            <div id="date-picker-example" class="col-md-6" inline="true">
+                <label for="date_cooked">Date Cooked:</label>
+                <h6>{{post.date_cooked}}</h6>
+            </div>
+            <div class="col-md-6">
+                <label for="instructions">Instructions:</label>
+                <h6>{{post.instructions}}</h6>
+            </div>
+            <div class="col-md-6">
+                <h6>Under 30 Minutes?</h6>
+                <h6>{{post.under_30}}</h6>
+            </div>
+        </form>
     </div>
 </main>
-
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">

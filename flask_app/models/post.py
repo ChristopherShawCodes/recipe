@@ -72,19 +72,45 @@ class Post:
         query = "DELETE FROM posts WHERE id = %(id)s;"
         return connectToMySQL("recipes_assignment").query_db(query,data)
 
-    # @classmethod
-    # def get_one(cls,data):
-    #     query = "SELECT * FROM posts WHERE id = %(id)s;"
-    #     return connectToMySQL('recipes_assignment').query_db(query,data)
 
     @classmethod
-    def get_by_way_of_id(cls,data):
+    def get_one(cls,data):
         query = "SELECT * FROM posts WHERE id = %(id)s;"
         results = connectToMySQL("recipes_assignment").query_db(query,data)
         return cls(results[0])
 
     @classmethod
     def update(cls,data):
-        query = "UPDATE posts SET name=%(name)s,type=%(type)s,num_of_boxes=%(num_of_boxes)s,updated_at=NOW() WHERE id = %(id)s;"
+        query = "UPDATE posts SET content=%(content)s,instructions=%(instructions)s,date_cooked=%(date_cooked)s,under_30=%(under_30)s,name=%(name)s,updated_at=NOW() WHERE id = %(id)s;"
         return connectToMySQL('recipes_assignment').query_db(query,data)
 
+    @classmethod
+    def get_last(cls):
+        query = "SELECT * FROM posts"
+        results = connectToMySQL('recipes_assignment').query_db(query)
+        return cls(results[len(results)-1])
+
+    @classmethod
+    def get_one_post(cls,data):
+        # Select all from posts and join them together via their ids
+        query = "SELECT * FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE posts.id = %(id)s;"
+        results = connectToMySQL('recipes_assignment').query_db(query,data)
+        print(results)
+        one_post = cls(results[0])
+        one_post_author_info = {
+            "id": results[0]['users.id'],
+            "content": results[0]['content'],
+            "created_at": results[0]['created_at'],
+            "first_name": results[0]['first_name'],
+            "last_name" : results[0]['last_name'],
+            "email" : results[0]['email'],
+            "updated_at": results[0]['updated_at'],
+            "password": results[0]['password'],
+            "instructions": results[0]['instructions'],
+            "date_cooked": results[0]['date_cooked'],
+            "under_30": results[0]['under_30'],
+            "name": results[0]['name']
+        }
+        author = user.User(one_post_author_info)
+        one_post.creator = author
+        return one_post

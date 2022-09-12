@@ -46,7 +46,7 @@
                 <td class="table-secondary">{{one_post.name}}</td>
                 <!-- recipe under 30 mins? here  -->
                 <td class="table-secondary">{{one_post.under_30}}</td>
-                <td class="table-secondary">{{ one_post.creator.first_name }}</td>
+                <td class="table-secondary">{{one_post.creator.first_name}}</td>
                 {% if session['user_id'] == one_post.creator.id %}
                 <!-- recipe.html href=/post/view/{{one_post.id}} -->
                 <td class="table-secondary"><a href="/post/view/{{one_post.id}}">View Recipe</a> |<a href="/post/edit/{{one_post.id}}">Edit</a>| <a href="/post/destroy/{{one_post.id}}">Delete</a></td>

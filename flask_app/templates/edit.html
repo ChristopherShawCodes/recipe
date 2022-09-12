@@ -33,31 +33,33 @@
             <h1 id="title">Edit Your Recipe</h1>
             <div class="col-md-6">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="{{post.name}}">
+                <input type="text" class="form-control" id="name" name="name" value="{{post.name}}">
             </div>
             <div class="col-md-6">
                 <label for="name" class="form-label"></label>
             </div>
             <div class="col-md-6">
-                <label for="publish_post">Description:</label>
-                <textarea class="form-control" input="text" id="input" rows="3" name="{{post.content}}"></textarea>
+                <label for="content">Description:</label>
+                <input class="form-control" input="text" id="input" rows="3" name="content" value="{{post.content}}"></input>
             </div>
             <div id="date-picker-example" class="col-md-6" inline="true">
-                <label for="start">Date Cooked:</label>
-                <input type="date" id="start" name="date_cooked"
-                value="2022-07-22"
-                min="2022-01-01" max="2022-12-31">
+                <label for="date_cooked">Date Cooked:</label>
+                <input type="datetime" id="start" name="date_cooked"
+                value="{{post.date_cooked.strftime('
+                %m/%d/%Y'
+                )}}"
+                >
             </div>
             <div class="col-md-6">
-                <label for="publish_post">Instructions:</label>
-                <textarea class="form-control" input="text" id="input" rows="3" name="{{post.instructions}}"></textarea>
+                <label for="instructions">Instructions:</label>
+                <input class="form-control" input="text" id="input" rows="3" name="instructions" value="{{post.instructions}}"></input>
             </div>
             <div class="col-md-6">
                 <h5>Under 30 Minutes?</h5>
-                <input class="form-check-input" type="radio" id="yes" value="yes" name="{{post.under_30}}">
-                <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                <input class="form-check-input" type="radio" id="no" value="no" name="{{post.under_30}}">
-                <label class="form-check-label" for="inlineCheckbox2">No</label>
+                <input class="form-check-input" type="radio" id="yes" name="under_30" value="{{post.under_30}}">
+                <label class="form-check-label" for="under_30">Yes</label>
+                <input class="form-check-input" type="radio" id="no" name="under_30" value="{{post.under_30}}">
+                <label class="form-check-label" for="under_30">No</label>
             </div>
             <button type="submit" id="submit">Submit</button>
         </form>

@@ -15,7 +15,7 @@ def publish_post():
     if 'user_id' not in session:
         return redirect('/')
     if not Post.validate_post(request.form):
-        return redirect('/dashboard')
+        return redirect('/post/edit')
     data = {
         "user_id": session['user_id'],
         "content": request.form['content'],
@@ -27,9 +27,10 @@ def publish_post():
         # "updated_at": request.form['updated_at'],
         # "user_id": request.form['user_id']
     }
+    new_post = Post.get_last()
     Post.publish(data)
     print(data)
-    return redirect('/dashboard')
+    return redirect('/dashboard',new_post=new_post)
 
 
 @app.route('/post/destroy/<int:id>')
@@ -42,7 +43,7 @@ def destroy(id):
 
 
 @app.route('/recipes/new')
-def create():
+def new_recipe():
     posts = Post.get_all_posts()
     return render_template("new.html",posts=posts)
 
@@ -53,14 +54,22 @@ def show(id):
     data = {
         "id": id
     }
-    return render_template("recipe.html")
+    print(data)
+    user_data = {
+        "id": session["user_id"]
+    }
+    # post = Post.get_one(data)
+    # all_posts = Post.get_all_posts()
+    post = Post.get_one_post(data)
+    user_instance = User.get_by_id(user_data)
+    return render_template("recipe.html",post=post,user=user_instance)
 
 @app.route('/post/edit/<int:id>')
 def edit(id):
     data = {
         "id": id
     }
-    post = Post.get_by_way_of_id(data)
+    post = Post.get_one(data)
     Post.publish(data)
     print(data)
     return render_template("edit.html",post=post)
